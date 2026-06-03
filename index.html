@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KISS shop Reviews</title>
+    <title>Відгуки про магазин</title>
     <style>
         /* Красивый и простой дизайн сайта */
         body { font-family: Arial, sans-serif; background-color: #f4f4f9; padding: 20px; text-align: center; }
@@ -17,7 +17,7 @@
         button:hover { background-color: #218838; }
         /* Стили для твоего всплывающего окна "Халепа" */
         .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); align-items: center; justify-content: center; }
-        .modal-content { background: white; padding: 25px; border-radius: 10px; max-width: 400px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+        .modal-content { background: white; padding: 25px; border-radius: 10px; max-width: 400px; box-shadow: 0 4px 15 rgba(0,0,0,0.2); }
         .modal-content h3 { color: #d9534f; margin-top: 0; }
         .close-btn { background: #d9534f; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; margin-top: 15px; }
     </style>
@@ -40,7 +40,8 @@
     <!-- Поле для текста отзыва -->
     <textarea id="reviewText" placeholder="Напишіть кілька слів про наш магазин..."></textarea>
     
-    <<button onclick="submitReview(); window.location.href='menu.html'">Надіслати відгук</button>
+    <button onclick="submitReview()">Надіслати відгук</button>
+</div>
 
 <!-- Твое кастомное всплывающее окошко "Халепа" -->
 <div id="halepaModal" class="modal">
@@ -69,8 +70,6 @@
 
     // Проверка при отправке
     function submitReview() {
-        const text = document.getElementById('reviewText').value;
-
         if (currentRating === 0) {
             alert("Будь ласка, поставте оцінку зірочками!");
             return;
@@ -82,17 +81,15 @@
             return;
         }
 
-        if (text.trim() === "") {
-            alert("Будь ласка, напишіть текст відгуку.");
-            return;
-        }
-
-        // Если всё ок (3, 4 или 5 звезд)
+        // Если всё ок (3, 4 или 5 звезд) — показываем спасибо и перекидываем в меню!
         alert("Дякуємо за ваш відгук!");
         
-        // Очищаем форму
+        // Очищаем форму на всякий случай
         setRating(0);
         document.getElementById('reviewText').value = "";
+
+        // МАГИЯ: открываем мамино меню!
+        window.location.href = 'menu.html';
     }
 
     // Закрытие окошка "Халепа"
