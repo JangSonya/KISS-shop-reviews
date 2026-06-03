@@ -1,65 +1,180 @@
-<div id="syrups-list" class="items-list" style="display: none;">
-    <h3>Коктейлі та сиропи</h3>
-    <ul>
-        <li>Мілкшейк <span class="price">60 грн</span></li>
-        <li style="font-weight:bold; justify-content:center;">Наші сиропи:</li>
-        <li>Фісташка</li>
-        <li>Лайм</li>
-        <li>Карамель</li>
-        <li>Солона карамель</li>
-        <li>Іриска</li>
-        <li>Зелений банан</li>
-        <li>Банан</li>
-        <li>Клен</li>
-        <li>Ірландський крем</li>
-        <li>Вишня</li>
-        <li>Білий шоколад</li>
-        <li>Шоколад</li>
-        <li>Полуниця</li>
-        <li>Бабл гам</li>
-        <li>Баунті</li>
-        <li>Лісова ягода</li>
-        <li>Лаванда</li>
-        <li>Кавун</li>
-        <li>Снікерс</li>
-        <li>Тірамісу</li>
-        <li>Ваніль-груша</li>
-        <li>Мигдаль</li>
-        <li>Гранат</li>
-        <li>Чорна смородина</li>
-        <li>Диня</li>
-        <li>Ананас</li>
-        <li>Кокос</li>
-    </ul>
-    <button class="menu-btn back-btn" onclick="openScreen('napoyi-menu')">⬅ Назад</button>
-</div>
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Меню</title>
+    <style>
+        /* Стильный и удобный дизайн для планшетов */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+        }
+        h1 {
+            margin-bottom: 30px;
+        }
+        .menu-container {
+            max-width: 400px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        /* Большие синие кнопки */
+        .menu-btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 15px;
+            font-size: 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .menu-btn:hover {
+            background-color: #0056b3;
+        }
+        /* Серая кнопка "Назад" */
+        .back-btn {
+            background-color: #6c757d;
+            margin-top: 10px;
+        }
+        .back-btn:hover {
+            background-color: #5a6268;
+        }
+        /* Белые карточки со списками товаров */
+        .items-list {
+            text-align: left;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-sizing: border-box;
+        }
+        .items-list h3 {
+            margin-top: 0;
+            text-align: center;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+        }
+        .items-list ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        .items-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+            font-size: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .items-list li:last-child {
+            border-bottom: none;
+        }
+        .price {
+            font-weight: bold;
+            color: #28a745;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
 
-<div id="bezalko-list" class="items-list" style="display: none;">
-    <h3>Безалкогольні напої</h3>
-    <ul>
-        <li>Квас <span class="price">50 грн/л</span></li>
-        <li>Лимонад <span class="price">50 грн/л</span></li>
-        <li>Кола Original <span class="price">40 грн</span></li>
-        <li>Кола Zero <span class="price">40 грн</span></li>
-        <li>Смузі <span class="price">45 грн</span></li>
-        <li>Смузі-сік <span class="price">35 грн</span></li>
-    </ul>
-    <button class="menu-btn back-btn" onclick="openScreen('oholodzhenni-menu')">⬅ Назад</button>
-</div>
+    <h1>Меню</h1>
 
-<div id="alko-list" class="items-list" style="display: none;">
-    <h3>Алкогольні напої</h3>
-    <ul>
-        <li>Васбург Лагер <span class="price">88 грн/л</span></li>
-        <li>Уманське пшеничне <span class="price">88 грн/л</span></li>
-        <li>Софіївське Блонд Ель <span class="price">100 грн/л</span></li>
-        <li>Уманське солодово-пшеничне <span class="price">100 грн/л</span></li>
-    </ul>
-    <button class="menu-btn back-btn" onclick="openScreen('oholodzhenni-menu')">⬅ Назад</button>
-</div>
+    <div class="menu-container">
+        
+        <!-- ГЛАВНЫЙ ЭКРАН (ДВЕРЬ 1) -->
+        <div id="main-menu">
+            <button class="menu-btn" onclick="alert('Розділ Їжа буде додано згодом!')">Їжа</button>
+            <button class="menu-btn" style="margin-top: 15px;" onclick="openScreen('snacks-list')">Снеки</button>
+            <button class="menu-btn" style="margin-top: 15px;" onclick="openScreen('napoyi-menu')">Напої</button>
+            <!-- Эта кнопка вернет пользователя на страницу отзывов index.html -->
+            <button class="menu-btn back-btn" onclick="window.location.href='index.html'">⬅ Назад до відгуків</button>
+        </div>
+
+        <!-- НАПОЇ (ДВЕРЬ 2) -->
+        <div id="napoyi-menu" style="display: none;">
+            <button class="menu-btn" onclick="openScreen('oholodzhenni-menu')">Охолодженні</button>
+            <button class="menu-btn" style="margin-top: 15px;" onclick="openScreen('kava-list')">Кава</button>
+            <button class="menu-btn" style="margin-top: 15px;" onclick="openScreen('syrups-list')">Молочні коктейлі / Сиропи</button>
+            <button class="menu-btn back-btn" onclick="openScreen('main-menu')">⬅ Назад</button>
+        </div>
+
+        <!-- ОХОЛОДЖЕННІ (ДВЕРЬ 3) -->
+        <div id="oholodzhenni-menu" style="display: none;">
+            <button class="menu-btn" onclick="openScreen('alko-list')">Алкогольні</button>
+            <button class="menu-btn" style="margin-top: 15px;" onclick="openScreen('bezalko-list')">Безалкогольні</button>
+            <button class="menu-btn back-btn" onclick="openScreen('napoyi-menu')">⬅ Назад</button>
+        </div>
+
+<!-- СПИСОК: КАВА -->
+        <div id="kava-list" class="items-list" style="display: none;">
+            <h3>Кава:</h3>
+            <ul>
+                <li>Еспрессо <span class="price">40 грн</span></li>
+                <li>Американо <span class="price">40 грн</span></li>
+                <li>Капучіно <span class="price">60 грн</span></li>
+                <li>Латте <span class="price">60 грн</span></li>
+                <li>Айс латте <span class="price">80 грн</span></li>
+                <li>Оранж кава <span class="price">100 грн</span></li>
+            </ul>
+            <button class="menu-btn back-btn" onclick="openScreen('napoyi-menu')">⬅ Назад</button>
+        </div>
+
+        <!-- СПИСОК: МОЛОЧНІ КОКТЕЙЛІ ТА СИРОПИ -->
+        <div id="syrups-list" class="items-list" style="display: none;">
+            <h3>Коктейлі та Сиропи:</h3>
+            <ul>
+                <li>Милк шейк <span class="price">60 грн</span></li>
+                <li style="border-bottom: 2px solid #007bff; font-weight: bold; padding-top: 15px; justify-content: center;">Наші сиропи до коктейлів:</li>
+                <li>Фісташка</li><li>Лайм</li><li>Карамель</li><li>Солона карамель</li><li>Іриска</li>
+                <li>Зелений банан</li><li>Банан</li><li>Клен</li><li>Ірландський крем</li><li>Вишня</li>
+                <li>Білий шоколад</li><li>Шоколад</li><li>Полуниця</li><li>Бабл гам</li><li>Баунті</li>
+                <li>Лісова ягода</li><li>Лаванда</li><li>Кавун</li><li>Снікерс</li><li>Тірамісу</li>
+                <li>Ваніль-груша</li><li>Мигдаль</li><li>Гранат</li><li>Чорна смородина</li><li>Диня</li>
+                <li>Ананас</li><li>Кокос</li>
+            </ul>
+            <button class="menu-btn back-btn" onclick="openScreen('napoyi-menu')">⬅ Назад</button>
+        </div>
+
+        <!-- СПИСОК: БЕЗАЛКОГОЛЬНЫЕ НАПИТКИ -->
+        <div id="bezalko-list" class="items-list" style="display: none;">
+            <h3>Безалкогольні напої:</h3>
+            <ul>
+                <li>Квас <span class="price">50 грн/л</span></li>
+                <li>Лимонад <span class="price">50 грн/л</span></li>
+                <li>Кола original <span class="price">40 грн</span></li>
+                <li>Кола зеро <span class="price">40 грн</span></li>
+                <li>Смузі <span class="price">45 грн</span></li>
+                <li>Смузі-сік <span class="price">35 грн</span></li>
+            </ul>
+            <button class="menu-btn back-btn" onclick="openScreen('oholodzhenni-menu')">⬅ Назад</button>
+        </div>
+
+        <!-- СПИСОК: АЛКОГОЛЬНЫЕ НАПИТКИ (ПИВО) -->
+        <div id="alko-list" class="items-list" style="display: none;">
+            <h3>Алкогольні напої:</h3>
+            <ul>
+                <li>Васбург Лагер <span class="price">88 грн/л</span></li>
+                <li>Уманське пшеничне <span class="price">88 грн/л</span></li>
+                <li>Софіївське Блонд Ель <span class="price">100 грн/л</span></li>
+                <li>Уманське Солодово-пшеничне <span class="price">100 грн/л</span></li>
+            </ul>
+            <button class="menu-btn back-btn" onclick="openScreen('oholodzhenni-menu')">⬅ Назад</button>
+        </div>
+<!-- СПИСОК: СНЕКИ -->
 
 <div id="snacks-list" class="items-list" style="display: none;">
-    <h3>Снеки</h3>
+    <h3>Снеки:</h3>
     <ul>
         <li>Горішки в асортименті <span class="price">40 грн/уп.</span></li>
         <li>Грінки в асортименті <span class="price">50 грн/уп.</span></li>
@@ -71,31 +186,20 @@
     </ul>
     <button class="menu-btn back-btn" onclick="openScreen('main-menu')">⬅ Назад</button>
 </div>
-`
+    </div>
 
-</div>
-
-<script>
-function openScreen(screenId) {
-    const screens = [
-        'main-menu',
-        'napoyi-menu',
-        'oholodzhenni-menu',
-        'kava-list',
-        'syrups-list',
-        'bezalko-list',
-        'alko-list',
-        'snacks-list'
-    ];
-
-    screens.forEach(id => {
-        const el = document.getElementById(id);
-        if (el) el.style.display = 'none';
-    });
-
-    document.getElementById(screenId).style.display = 'block';
-}
-</script>
+    <script>
+        // Скрипт переключения экранов
+        function openScreen(screenId) {
+            const screens = ['main-menu', 'napoyi-menu', 'oholodzhenni-menu', 'kava-list', 'syrups-list', 'bezalko-list', 'alko-list', 'snacks-list'];
+            screens.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.style.display = 'none';
+            });
+            const target = document.getElementById(screenId);
+            if (target) target.style.display = 'block';
+        }
+    </script>
 
 </body>
-</html>
+                                                               </html>
