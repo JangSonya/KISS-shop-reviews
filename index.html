@@ -42,7 +42,15 @@
     
     <button onclick="submitReview()">Надіслати відгук</button>
 </div>
+<button onclick="submitReview()">Надіслати відгук</button>
 
+<hr>
+<h2>Відгуки покупців</h2>
+<div id="reviewsList">
+    <p>Поки що немає відгуків.</p>
+</div>
+
+</div>
 <!-- Твое кастомное всплывающее окошко "Халепа" -->
 <div id="halepaModal" class="modal">
     <div class="modal-content">
@@ -68,35 +76,63 @@
         });
     }
 
-    // Проверка при отправке
-    function submitReview() {
-        if (currentRating === 0) {
-            alert("Будь ласка, поставте оцінку зірочками!");
-            return;
-        }
-
-        // Проверка твоей задумки (меньше 3 звезд — это 1 и 2 звезды)
-        if (currentRating < 3) {
-            document.getElementById('halepaModal').style.display = 'flex';
-            return;
-        }
-
-        // Если всё ок (3, 4 или 5 звезд) — показываем спасибо и перекидываем в меню!
-        alert("Дякуємо за ваш відгук!");
-        
-        // Очищаем форму на всякий случай
-        setRating(0);
-        document.getElementById('reviewText').value = "";
-
-        // МАГИЯ: открываем меню!
-        window.location.href = 'menu.html';
+function submitReview() {
+    if (currentRating === 0) {
+        alert("Будь ласка, поставте оцінку зірочками!");
+        return;
     }
+
+    if (currentRating < 3) {
+        document.getElementById('halepaModal').style.display = 'flex';
+        return;
+    }
+
+    const reviewText = document.getElementById('reviewText').value;
+
+    let reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+
+    reviews.unshift({
+        rating: currentRating,
+        text: reviewText
+    });
+
+    localStorage.setItem('reviews', JSON.stringify(reviews));
+
+    alert("Дякуємо за ваш відгук!");
+
+    setRating(0);
+    document.getElementById('reviewText').value = "";
+
+    loadReviews();
+}
 
     // Закрытие окошка "Халепа"
     function closeModal() {
         document.getElementById('halepaModal').style.display = 'none';
     }
-</script>
+function loadReviews() {
+    const reviewsList = document.getElementById('reviewsList');
+
+    let reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+
+    if (reviews.length === 0) {
+        reviewsList.innerHTML = "<p>Поки що немає відгуків.</p>";
+        return;
+    }
+
+    reviewsList.innerHTML = "";
+
+    reviews.forEach(review => {
+        reviewsList.innerHTML += `
+            <div style="border:1px solid #ccc; padding:10px; margin:10px 0; border-radius:8px;">
+                <strong>${"★".repeat(review.rating)}</strong>
+                <p>${review.text}</p>
+            </div>
+        `;
+    });
+}
+
+loadReviews(); </script>
 
 </body>
 </html>
