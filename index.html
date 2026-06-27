@@ -105,34 +105,3 @@ function submitReview() {
 
     loadReviews();
 }
-
-    // Закрытие окошка "Халепа"
-    function closeModal() {
-        document.getElementById('halepaModal').style.display = 'none';
-    }
-function loadReviews() {
-    const reviewsList = document.getElementById('reviewsList');
-
-    let reviews = JSON.parse(localStorage.getItem('reviews')) || [];
-
-    if (reviews.length === 0) {
-        reviewsList.innerHTML = "<p>Поки що немає відгуків.</p>";
-        return;
-    }
-
-    reviewsList.innerHTML = "";
-
-    reviews.forEach(review => {
-        reviewsList.innerHTML += `
-            <div style="border:1px solid #ccc; padding:10px; margin:10px 0; border-radius:8px;">
-                <strong>${"★".repeat(review.rating)}</strong>
-                <p>${review.text}</p>
-            </div>
-        `;
-    });
-}
-
-loadReviews(); </script>
-
-</body>
-</html>
